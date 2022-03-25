@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/list_fragment">
+
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="com.bignerdranch.android.inventory.ListFragment"
+        android:label="Inventors"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/add_fragment" />
+        <action
+            android:id="@+id/action_list_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_fragment"
+        android:name="com.bignerdranch.android.inventory.AddFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add">
+        <action
+            android:id="@+id/action_add_fragment_to_list_fragment"
+            app:destination="@id/list_fragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="item_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.bignerdranch.android.inventory.DetailFragment"
+        android:label="Item Details"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detail_fragment_to_add_fragment"
+            app:destination="@id/add_fragment" />
+        <argument
+            android:name="item_id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
